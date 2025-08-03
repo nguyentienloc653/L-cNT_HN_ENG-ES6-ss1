@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sumArr() {
+        const result = [];
+
+        for (let i = 0; i < arguments.length; i++) {
+          const arr = arguments[i];
+          let sum = 0;
+
+          for (let j = 0; j < arr.length; j++) {
+            sum += arr[j];
+          }
+          result.push(sum);
+        }
+        return result;
+      }
+
+      console.log(sumArr([1, 2], [6, 7, 8], [12, 8]));
+    </script>
+  </body>
+</html>

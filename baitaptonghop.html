@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Student {
+        constructor(id, name, age, scores) {
+          this.id = id;
+          this.name = name;
+          this.age = age;
+          this.scores = scores;
+        }
+
+        getAverageScore() {
+          return (
+            this.scores.reduce((sum, s) => sum + s, 0) / this.scores.length
+          );
+        }
+      }
+
+      const student1 = new Student("S001", "Nguyen Tien Loc", 20, [8, 7, 9]);
+      const student2 = new Student("S002", "Tran Thi B", 21, [6, 7.5, 8]);
+      const student3 = new Student("S003", "Ha Thao C", 19, [9, 9.5, 10]);
+      const student4 = new Student("S004", "Pham Thi D", 22, [5, 6, 5.5]);
+      const student5 = new Student("S005", "Pham Van E", 20, [7, 8, 7.5]);
+
+      const studentList = [student1, student2, student3, student4, student5];
+
+      function getStudentById(list, id) {
+        return list.find((s) => s.id === id) || null;
+      }
+
+      function getTopStudents(list) {
+        const maxAvg = Math.max(...list.map((s) => s.getAverageScore()));
+        return list.filter((s) => s.getAverageScore() === maxAvg);
+      }
+
+      function getClassAverage(list) {
+        const total = list.reduce((sum, s) => sum + s.getAverageScore(), 0);
+        return total / list.length;
+      }
+
+      function getStudentsByScoreRange(list, min, max) {
+        return list.filter((s) => {
+          const avg = s.getAverageScore();
+          return avg >= min && avg <= max;
+        });
+      }
+
+      function sortStudentsByName(list) {
+        return [...list].sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      console.log(getStudentById(studentList, "S003"));
+      console.log(getTopStudents(studentList));
+      console.log(getClassAverage(studentList).toFixed(2));
+      console.log(getStudentsByScoreRange(studentList, 7, 9));
+      console.log(sortStudentsByName(studentList));
+    </script>
+  </body>
+</html>
