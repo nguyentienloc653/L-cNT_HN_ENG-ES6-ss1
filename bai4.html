@@ -6,6 +6,20 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      function checkParity(a) {
+    if (typeof a !== 'number' || !Number.isInteger(a)) {
+        console.log("a not is number");
+        return;
+    }
+
+    if (a % 2 === 0) {
+        console.log(`${a} is an even number`);
+    } else {
+        console.log(`${a} is odd`);
+    }
+}
+    </script>
   </body>
 </html>
+
